@@ -10,7 +10,6 @@ A simple Python script using `pytube`/`pytubefix` to download songs from YouTube
 - 🎵 Downloads MP3s from YouTube using search queries
 - 📝 Supports custom file naming (with/without artist names)
 - 📁 Organizes downloads into designated folders
-- 💡 Ignores comments (lines starting with `#`) in song lists
 - ⚙️ Configurable through simple JSON settings
 
 ## Installation
@@ -105,7 +104,7 @@ Not that I would know
 
 MIT License - See [LICENSE](LICENSE) for details.
 
-## to do
+## To do
 - edit tags to include artist name and album name
 - add compatibility with other file types, not only mp3
 - import song list directly from spotify link
