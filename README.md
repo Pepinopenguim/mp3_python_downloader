@@ -23,7 +23,7 @@ A simple Python script using `pytube`/`pytubefix` to download songs from YouTube
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/mp3_python_downloader.git
+   git clone https://github.com/Pepinopenguim/mp3_python_downloader.git
    cd mp3_python_downloader
    ```
 
