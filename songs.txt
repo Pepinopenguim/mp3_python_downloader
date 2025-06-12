@@ -1,0 +1,37 @@
+# https://www.chosic.com/spotify-playlist-exporter/
+# I use the site above to convert my spotify playlists to
+# txt and download them off youtube
+# preferrably, write songs in the format 'Author' - 'song name' although not obligatory
+# if you change the settings accordingly
+
+Kevin MacLeod - Monkeys Spinning Monkeys  
+The Green Orbs - A Little Trip  
+Jingle Punks - Back to the 80s  
+Silent Partner - Springish  
+Gunnar Olsen - No Mercy  
+The 126ers - Whiskey on the Mississippi  
+E's Jammy Jams - Hot Coffee  
+MK2 - Far Away  
+Chris Zabriskie - Prelude No. 2  
+The Whole Other - Bourbon Street  
+Doug Maxwell - Bossa Antigua  
+Audionautix - Travel Light  
+Riot - Level Up  
+Vibe Tracks - Positive Feeling  
+Unicorn Heads - Smooth and Cool  
+Scott Holmes - Upbeat Party  
+Geographer - Sky Scraper  
+Huma-Huma - Crimson Fly  
+Puddle of Infinity - Soul and Mind  
+Quincas Moreira - The Urban Groove  
+Asher Fulero - Sunset Dream  
+TrackTribe - Late Night Drive  
+Patrick Patrikios - Bright Ideas  
+Jeremy Blake - Powerup!  
+Freedom Trail Studio - Sunny Morning  
+Text Me Records - Lovers' Rock  
+NEFFEX - Best of Me  
+LYO - Take Me Higher  
+DJ Williams - Timeless  
+Coyote Hearing - Desert Planet  
+Sappheiros - Dawn  
