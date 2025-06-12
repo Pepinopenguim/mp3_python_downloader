@@ -98,7 +98,6 @@ def main():
     # song names
     with open(song_list_txtfile, "r", encoding="utf-8") as f:
         songs = [i for i in f.read().split("\n") if (not i.startswith("#")) and i] # remove 'comments'
-        songs = [i for i in songs if i] # removes empty strings
         f.close()
 
     # create save path if not exists
