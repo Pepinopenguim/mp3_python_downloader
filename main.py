@@ -94,7 +94,7 @@ def main():
     
     download_path = os.path.join(download_path, save_folder)
 
-    print(f"> Songs will be downloaded to {doanload_path}")
+    print(f"> Songs will be downloaded to {download_path}")
 
     # open txt file and get list of
     # song names
