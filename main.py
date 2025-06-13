@@ -90,9 +90,11 @@ def main():
     if data["custom download path"] is None:
         download_path = str(Path.home() / "Downloads")
     else:
-        data["custom download path"]
+        download_path = data["custom download path"]
     
     download_path = os.path.join(download_path, save_folder)
+
+    print(f"> Songs will be downloaded to {doanload_path}")
 
     # open txt file and get list of
     # song names
