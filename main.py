@@ -30,10 +30,10 @@ def change_metadata(path_to_mp3, song_name, data, track_num):
 
     audiofile.tag.save()
 
-def convert_to_mp3(input_path: str, output_path: str):
+def convert_to_mp3(input_path: str, output_path: str, ffmpeg_path: str = "ffmpeg"):
     """Convert audio file to MP3 using ffmpeg."""
     subprocess.run([
-        "ffmpeg",
+        ffmpeg_path,
         "-i", input_path,
         "-codec:a", "libmp3lame",  
         "-q:a", "2",               
@@ -92,11 +92,16 @@ def save_audio(song_name:str, save_path:str, data:dict, index):
     final_mp3_path = os.path.join(save_path, f"{file_name}.mp3")
     
     if data["ffmpeg"]:
+        if isinstance(data["ffmpeg"], bool):
+            ffmpeg_path = "ffmpeg" # in this case, gets from path
+        else:
+            # else, its a manually inserted path
+            ffmpeg_path = data["ffmpeg"]
         # Download song as m4a
         audio.download(output_path=save_path, filename=f"{file_name}.m4a")
 
         # Convert to mp3
-        convert_to_mp3(temp_m4a_path, final_mp3_path)
+        convert_to_mp3(temp_m4a_path, final_mp3_path, ffmpeg_path=ffmpeg_path)
 
         # change metadata
         change_metadata(final_mp3_path, song_name, data, index)

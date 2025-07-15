@@ -1,9 +1,9 @@
 {
-    "custom download path": "C:/Users/Vitor/OneDrive/Media/Música", 
-    "folder name": "Legião Urbana - Discografia completa",
+    "custom download path": null, 
+    "folder name": "epic",
     "songs text file": "songs.txt",
     "song name only":true,
-    "index names": false,
-    "index digits": 3,
-    "ffmpeg":true
+    "index names": true,
+    "index digits": 2,
+    "ffmpeg":"C:/Users/DYNATEST/ffmpeg/bin/ffmpeg.exe"
 }
