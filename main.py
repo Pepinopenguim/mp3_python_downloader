@@ -5,7 +5,8 @@ import os
 import json
 import unicodedata
 import warnings
-
+import eyed3
+import subprocess
 
 
 def get_config(config_file:str = "config.json") -> dict:
@@ -17,8 +18,31 @@ def get_config(config_file:str = "config.json") -> dict:
 
     return data
 
+def change_metadata(path_to_mp3, song_name, data, track_num):
+    artist, title = song_name.split(" - ")[:2]
+    album = data["folder name"]
+
+    audiofile = eyed3.load(path_to_mp3)
+    audiofile.tag.artist = artist
+    audiofile.tag.album = album
+    audiofile.tag.title = title
+    audiofile.tag.track_num = track_num + 1
+
+    audiofile.tag.save()
+
+def convert_to_mp3(input_path: str, output_path: str):
+    """Convert audio file to MP3 using ffmpeg."""
+    subprocess.run([
+        "ffmpeg",
+        "-i", input_path,
+        "-codec:a", "libmp3lame",  
+        "-q:a", "2",               
+        "-y",  
+        output_path
+    ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    os.remove(input_path)  # Delete the original .m4a file
+
 def handle_songname(song_name, data, index):
-    # yeah yeah It's ugly but it works ok like oh nooo i lost .02 milliseconds on each loop this is o(1) not o(2) shut up like i'm studying for civil engineering i have no idea what o(1) means nor do i care
     file_name = ""
 
     # remove invalid characters
@@ -51,26 +75,38 @@ def save_audio(song_name:str, save_path:str, data:dict, index):
         return
 
     i = 0
-    # loop through search results
-    # if there's an error getting the song file
-    # skip to the next one
     while True:
         try:
             video = s.results[i] 
             video_url = video.watch_url
             audio = YouTube(video_url).streams.filter(only_audio=True)[0]
-            break # if download is successful, stop loop
+            break
         except:
             i += 1
         
-    # treat file name
+    # Get clean filename
     file_name = handle_songname(song_name, data=data, index=index)
+    
+    # Define full paths
+    temp_m4a_path = os.path.join(save_path, f"{file_name}.m4a")
+    final_mp3_path = os.path.join(save_path, f"{file_name}.mp3")
+    
+    if data["ffmpeg"]:
+        # Download song as m4a
+        audio.download(output_path=save_path, filename=f"{file_name}.m4a")
 
-    # download song as mp3
-    audio.download(output_path=save_path, filename=f"{file_name}.mp3")
+        # Convert to mp3
+        convert_to_mp3(temp_m4a_path, final_mp3_path)
 
-    # returns songpath
-    return os.path.join(save_path, f"{file_name}.mp3")
+        # change metadata
+        change_metadata(final_mp3_path, song_name, data, index)
+
+    
+    else:
+        audio.download(output_path=save_path, file_name=f"{file_name}.mp3")
+
+    # Return the correct path
+    return final_mp3_path
 
 def main():
     
@@ -111,7 +147,6 @@ def main():
         # only downloads songs if they are not already in the given path
         if f"{handle_songname(song, data=data, index=i)}.mp3" not in os.listdir(download_path):
             song_path = save_audio(song, save_path=download_path, data=data, index=i)
-
     
 
 if __name__ == "__main__":

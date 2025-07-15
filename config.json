@@ -1,8 +1,9 @@
 {
-    "custom download path": null, 
-    "folder name": "copyright free songs",
+    "custom download path": "C:/Users/Vitor/OneDrive/Media/Música", 
+    "folder name": "Legião Urbana - Discografia completa",
     "songs text file": "songs.txt",
     "song name only":true,
     "index names": false,
-    "index digits": 3
+    "index digits": 3,
+    "ffmpeg":true
 }
